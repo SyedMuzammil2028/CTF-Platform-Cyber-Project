@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Death Note CTF</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+ 
+</head>
+<body>
+
+
+    <header class="dn-banner">
+        <img src="/static/img/dn_logo.png" class="banner-logo" alt="Death Note Banner">
+    </header>
+    
+
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+<!-- MODAL -->
+<div class="modal-backdrop" id="challenge-modal">
+    <div class="modal-window">
+
+        <div id="modal-close" class="modal-close">✕</div>
+
+        <div id="modal-title" class="modal-title"></div>
+        <div id="modal-meta" class="modal-meta"></div>
+        <div id="modal-description" class="modal-description"></div>
+
+        <button class="btn btn-secondary" id="open-challenge-btn">Open Challenge</button>
+
+        <form id="flag-form" style="margin-top: 16px;">
+            <label for="flag-input">Submit Flag:</label>
+            <input type="text" id="flag-input" class="flag-input" placeholder="DNCTF{...}">
+            <button type="submit" class="btn btn-primary" style="margin-top: 8px;">Submit</button>
+            <div id="flag-message" class="flag-message"></div>
+        </form>
+
+    </div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/modal.js') }}"></script>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>Authors: <strong>Syed Muzammil</strong>, 
+       <strong>Syed Shaheer Hassan</strong>, 
+       <strong>Syed Ahsan</strong></p>
+</footer>
+
+
+</body>
+</html>

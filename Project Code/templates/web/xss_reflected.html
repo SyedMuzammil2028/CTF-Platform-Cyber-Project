@@ -1,0 +1,18 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2 class="section-title">Mirror of Ryuk (Reflected XSS)</h2>
+<div style="max-width: 800px; margin: 0 auto; text-align:center;">
+
+<p>The page reflects whatever you search. Maybe it trusts you a bit too much.</p>
+<form method="GET">
+    <input name="q" placeholder="Search term" class="flag-input"
+           value="{{ request.args.get('q', '') }}"><br>
+    <button class="btn btn-primary" style="margin-top:10px;">Search</button>
+</form>
+{% if query %}
+    <p style="margin-top:18px;">You searched for: {{ query|safe }}</p>
+{% endif %}
+
+</div>
+{% endblock %}

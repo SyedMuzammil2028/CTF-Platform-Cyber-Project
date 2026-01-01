@@ -1,0 +1,7 @@
+192.168.1.10 - - [21/Nov/2025:12:10:01 +0000] "GET / HTTP/1.1" 200 512 "-" "Mozilla/5.0"
+10.13.37.66 - - [21/Nov/2025:12:11:59 +0000] "GET /hidden/ryuk_panel HTTP/1.1" 200 1337 "-" "RyukEye/1.0"
+10.13.37.66 - - [21/Nov/2025:12:12:04 +0000] "GET /hidden/flag.txt HTTP/1.1" 200 64 "-" "RyukEye/1.0"
+# Analyst note:
+stolen_flag=DNCTF{k1ra_trace_uncovered}
+
+to edit this 

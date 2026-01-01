@@ -1,0 +1,8 @@
+# Fake capture
+12:00:01 IP 10.0.0.10.54321 > 10.0.0.5.80: GET /note.txt HTTP/1.1
+Host: deathnote.local
+
+HTTP/1.1 200 OK
+
+Here is the note you were looking for:
+DNCTF{pcap_unmasked}

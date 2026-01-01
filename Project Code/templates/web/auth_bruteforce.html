@@ -1,0 +1,17 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2 class="section-title">Guess My Name (Auth Bruteforce)</h2>
+<div style="max-width: 800px; margin: 0 auto; text-align:center;">
+
+<p>One of the admins reused a very weak password. Your wordlist may already know it.</p>
+<p>Try to log in as the weak admin user and capture the flag.</p>
+<form method="POST">
+    <input name="username" placeholder="Username" class="flag-input"><br>
+    <input name="password" placeholder="Password" class="flag-input" style="margin-top:8px;"><br>
+    <button class="btn btn-primary" style="margin-top:10px;">Login</button>
+</form>
+{% if info %}<p style="margin-top:12px;">{{ info }}</p>{% endif %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2 class="section-title">Voices in the Notebook (Stored XSS)</h2>
+<div style="max-width: 800px; margin: 0 auto; text-align:center;">
+
+<p>Leave a comment. An "admin" occasionally checks this page in their browser...</p>
+<form method="POST">
+    <textarea name="content" rows="3" class="flag-input" placeholder="Say something..."></textarea><br>
+    <button class="btn btn-primary" style="margin-top:10px;">Post</button>
+</form>
+<div style="margin-top:18px; text-align:left; background:#111; padding:14px; border-radius:10px;">
+    <strong>Comments:</strong><br>
+    {% for c in comments %}
+        <div style="margin-top:8px; border-bottom:1px solid #333; padding-bottom:4px;">
+            {{ c["content"]|safe }}
+        </div>
+    {% endfor %}
+</div>
+{% if info %}<p style="margin-top:10px; color:#bbb;">{{ info }}</p>{% endif %}
+
+</div>
+{% endblock %}

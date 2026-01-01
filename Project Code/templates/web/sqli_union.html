@@ -1,0 +1,28 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2 class="section-title">Union of Justice (SQLi UNION)</h2>
+<div style="max-width: 800px; margin: 0 auto; text-align:center;">
+
+<p>The notes table hides something for the admin. The search function may be a bit too "flexible".</p>
+<p>Try typical UNION-based SQL injection against the <code>owner</code> field to dump the secret flag.</p>
+<form method="GET">
+    <input name="owner" placeholder="Search owner (e.g. guest)" class="flag-input"
+           value="{{ request.args.get('owner', '') }}"><br>
+    <button class="btn btn-primary" style="margin-top:10px;">Search</button>
+</form>
+{% if rows %}
+    <div style="margin-top:18px; text-align:left; background:#111; padding:14px; border-radius:10px;">
+    {% for r in rows %}
+        <div style="margin-bottom:8px;">
+            <strong>Owner:</strong> {{ r[0] }}<br>
+            <strong>Note:</strong> {{ r[1] }}
+        </div>
+    {% endfor %}
+    </div>
+{% elif error %}
+    <p style="color:#ff5252; margin-top:12px;">{{ error }}</p>
+{% endif %}
+
+</div>
+{% endblock %}

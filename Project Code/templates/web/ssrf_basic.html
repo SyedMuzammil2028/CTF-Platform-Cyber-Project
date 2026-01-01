@@ -1,0 +1,21 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2 class="section-title">Inner Eye (Basic SSRF)</h2>
+<div style="max-width: 800px; margin: 0 auto; text-align:center;">
+
+<p>This fetcher grabs a URL and shows you the body. It was meant for fetching public APIs.</p>
+<p>Maybe it can also see internal things the browser can't...</p>
+<form method="GET">
+    <input name="url" placeholder="http://example.com/" class="flag-input"
+           value="{{ request.args.get('url', '') }}"><br>
+    <button class="btn btn-primary" style="margin-top:10px;">Fetch</button>
+</form>
+{% if content %}
+    <pre style="margin-top:18px; text-align:left; background:#111; padding:14px; border-radius:10px; max-height:300px; overflow:auto;">{{ content }}</pre>
+{% elif error %}
+    <p style="color:#ff5252; margin-top:12px;">{{ error }}</p>
+{% endif %}
+
+</div>
+{% endblock %}

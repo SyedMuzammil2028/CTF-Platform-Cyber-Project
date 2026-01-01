@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+<!-- ------------------ PROGRESS TRACKER ------------------ -->
+<div class="progress-box">
+    <div class="progress-title">Progress Tracker</div>
+
+    <div class="bar-label">Easy ({{ easy_solved }}/{{ total_easy }})</div>
+    <div class="bar-container">
+        <div class="bar easy-bar" style="width: {{ easy_percent }}%;"></div>
+    </div>
+
+    <div class="bar-label">Medium ({{ medium_solved }}/{{ total_medium }})</div>
+    <div class="bar-container">
+        <div class="bar medium-bar" style="width: {{ medium_percent }}%;"></div>
+    </div>
+
+    <div class="bar-label">Hard ({{ hard_solved }}/{{ total_hard }})</div>
+    <div class="bar-container">
+        <div class="bar hard-bar" style="width: {{ hard_percent }}%;"></div>
+    </div>
+</div>
+
+
+<!-- ------------------ OSINT CHALLENGES ------------------ -->
+<h2 class="section-title" style="margin-top:60px;">OSINT Challenges</h2>
+<div class="challenge-grid">
+    {% for cid, ch in challenges.items() if ch.category == "OSINT" %}
+    <div class="challenge-card {% if cid in solved %}solved{% endif %}" data-challenge-id="{{ cid }}">
+        <div class="challenge-category">{{ ch.category }}</div>
+        <div class="challenge-title">{{ ch.title }}</div>
+        <div class="difficulty-pill diff-{{ ch.difficulty|lower }}">
+            {{ ch.difficulty }}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- ------------------ FORENSICS CHALLENGES ------------------ -->
+<h2 class="section-title" style="margin-top:60px;">Forensics Challenges</h2>
+<div class="challenge-grid">
+    {% for cid, ch in challenges.items() if ch.category == "Forensics" %}
+    <div class="challenge-card {% if cid in solved %}solved{% endif %}" data-challenge-id="{{ cid }}">
+        <div class="challenge-category">{{ ch.category }}</div>
+        <div class="challenge-title">{{ ch.title }}</div>
+        <div class="difficulty-pill diff-{{ ch.difficulty|lower }}">
+            {{ ch.difficulty }}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- ------------------ WEB CHALLENGES ------------------ -->
+<h2 class="section-title">Web Exploitation Challenges</h2>
+<div class="challenge-grid">
+    {% for cid, ch in challenges.items() if ch.category == "Web Exploitation" %}
+    <div class="challenge-card {% if cid in solved %}solved{% endif %}" data-challenge-id="{{ cid }}">
+        <div class="challenge-category">{{ ch.category }}</div>
+        <div class="challenge-title">{{ ch.title }}</div>
+        <div class="difficulty-pill diff-{{ ch.difficulty|lower }}">
+            {{ ch.difficulty }}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<!-- ------------------ Crypto CHALLENGES ------------------ -->
+<h2 class="section-title" style="margin-top:60px;">Crypto Challenges</h2>
+<div class="challenge-grid">
+    {% for cid, ch in challenges.items() if ch.category == "Crypto" %}
+    <div class="challenge-card {% if cid in solved %}solved{% endif %}" data-challenge-id="{{ cid }}">
+        <div class="challenge-category">{{ ch.category }}</div>
+        <div class="challenge-title">{{ ch.title }}</div>
+        <div class="difficulty-pill diff-{{ ch.difficulty|lower }}">
+            {{ ch.difficulty }}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- ------------------ Special CHALLENGES ------------------ -->
+<h2 class="section-title" style="margin-top:60px;">DeathNote Special Challenges</h2>
+<div class="challenge-grid">
+    {% for cid, ch in challenges.items() if ch.category == "Special" %}
+    <div class="challenge-card {% if cid in solved %}solved{% endif %}" data-challenge-id="{{ cid }}">
+        <div class="challenge-category">{{ ch.category }}</div>
+        <div class="challenge-title">{{ ch.title }}</div>
+        <div class="difficulty-pill diff-{{ ch.difficulty|lower }}">
+            {{ ch.difficulty }}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<a href="/reset_progress" class="reset-btn-deathnote">☠ Reset All Progress</a>
+
+{% endblock %}

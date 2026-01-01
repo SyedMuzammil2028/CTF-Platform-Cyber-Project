@@ -1,0 +1,21 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2 class="section-title">Pages Between Pages (LFI / Path Traversal)</h2>
+<div style="max-width: 800px; margin: 0 auto; text-align:center;">
+
+<p>This endpoint reads notes from the server's <code>notes/</code> directory.</p>
+<p>If input is not sanitized, you might be able to climb out of that directory and read something more interesting. File name is flag_lfi with text file extension</p>
+<form method="GET">
+    <input name="file" placeholder="Filename (e.g. note.txt)" class="flag-input"
+           value="{{ request.args.get('file', 'note.txt') }}"><br>
+    <button class="btn btn-primary" style="margin-top:10px;">View File</button>
+</form>
+{% if content %}
+    <pre style="margin-top:18px; text-align:left; background:#111; padding:14px; border-radius:10px;">{{ content }}</pre>
+{% elif error %}
+    <p style="color:#ff5252; margin-top:12px;">{{ error }}</p>
+{% endif %}
+
+</div>
+{% endblock %}

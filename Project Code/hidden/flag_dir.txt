@@ -1,0 +1,1 @@
+DNCTF{d1r_fuzz_r3v34ls_s3cr3ts}

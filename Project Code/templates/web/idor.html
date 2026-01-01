@@ -1,0 +1,28 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2 class="section-title">Out of Order (IDOR)</h2>
+<div style="max-width: 800px; margin: 0 auto; text-align:center;">
+
+<p>User profiles are loaded by numeric id. You start at id=1, but nothing stops you from looking around, just start doing it manually. Hint: id is two/three digits number Be aware of Fake Flags</p>
+<form method="GET">
+    <input name="id" placeholder="Profile ID" class="flag-input" value="{{ request.args.get('id', '1') }}"><br>
+    <button class="btn btn-primary" style="margin-top:10px;">View Profile</button>
+</form>
+{% if profile %}
+    <div style="margin-top:18px; text-align:left; background:#111; padding:14px; border-radius:10px;">
+        <strong>ID:</strong> {{ profile["id"] }}<br>
+        <strong>Username:</strong> {{ profile["username"] }}<br>
+        <strong>Display Name:</strong> {{ profile["display_name"] }}<br>
+        <strong>Bio:</strong> {{ profile["bio"] }}<br>
+        <strong>Admin:</strong> {{ 'yes' if profile["is_admin"] else 'no' }}<br>
+        {% if profile["flag"] %}
+        <strong style="color:#00c853;">Flag:</strong> {{ profile["flag"] }}<br>
+        {% endif %}
+    </div>
+{% elif error %}
+    <p style="color:#ff5252; margin-top:12px;">{{ error }}</p>
+{% endif %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2 class="section-title">Shinigami's Form (CSRF)</h2>
+<div style="max-width: 800px; margin: 0 auto; text-align:center;">
+
+<p>A simple profile form that updates the email for a special user. No CSRF token, no questions asked.</p>
+<p>In a real attack, you'd make the victim submit this form from another site. Here you can do it directly.</p>
+<form method="POST">
+    <input name="email" placeholder="New email for csrf_victim" class="flag-input"><br>
+    <button class="btn btn-primary" style="margin-top:10px;">Update Email</button>
+</form>
+{% if message %}<p style="margin-top:12px;">{{ message }}</p>{% endif %}
+
+</div>
+{% endblock %}

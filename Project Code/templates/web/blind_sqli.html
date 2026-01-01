@@ -1,0 +1,19 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2 class="section-title">Silent Oracle (Blind SQLi)</h2>
+<div style="max-width: 800px; margin: 0 auto; text-align:center;">
+
+<p>This endpoint only answers whether a user exists or not.</p>
+<p>But the behavior changes based on your injected condition... A patient attacker could exfiltrate a whole secret string.</p>
+<form method="GET">
+    <input name="id" placeholder="id parameter payload" class="flag-input"
+           value="{{ request.args.get('id', '1') }}"><br>
+    <button class="btn btn-primary" style="margin-top:10px;">Check</button>
+</form>
+{% if result %}
+    <p style="margin-top:12px;">Response: {{ result }}</p>
+{% endif %}
+
+</div>
+{% endblock %}
